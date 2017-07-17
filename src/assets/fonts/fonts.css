@@ -1,0 +1,7 @@
+@font-face {
+  font-family: Nautilus;
+  src: url('nautilus.woff2') format('woff2'),
+  url('nautilus.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

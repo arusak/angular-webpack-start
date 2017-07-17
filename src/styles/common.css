@@ -1,0 +1,131 @@
+html {
+  font-size: 16px;
+  line-height: 1.25;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: var(--verdana);
+  font-size: 0.875rem;
+  color: var(--darkgrey);
+  max-width: 1400px;
+  min-width: 960px;
+  margin: 0 auto;
+}
+
+input[type=text],
+input[type=number],
+input[type=password],
+input[type=email],
+input:not([type]),
+textarea,
+button,
+.button {
+  font-family: var(--verdana);
+  font-size: 1em;
+  vertical-align: middle;
+  min-height: 2.25rem;
+  box-sizing: border-box;
+}
+
+input, textarea {
+  padding: 0.5em;
+}
+
+textarea {
+  height: 8em;
+}
+
+h1 {
+  font-family: var(--nautilus);
+  font-size: 1.85rem;
+  line-height: 1.25;
+  margin: 0 0 1.25rem 0;
+}
+
+h2 {
+  font-family: var(--nautilus);
+  font-size: 1.4rem;
+  line-height: 1.25;
+  margin: 0 0 1.25rem 0;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+p {
+  line-height: 1.75;
+  margin: 0 0 1rem 0;
+  color: var(--grey);
+}
+
+a {
+  color: var(--greentext);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: var(--hoverlink);
+
+    & > span {
+      border-bottom-color: var(--hoverlinkunderline);
+    }
+  }
+
+  &:focus {
+    outline: 0.25rem auto var(--orange);
+    outline-offset: -0.125rem;
+  }
+
+  & > span {
+    border-bottom: thin solid var(--linkunderline);
+  }
+
+}
+
+
+wp-button + wp-button {
+  margin-left: 0.5rem;
+}
+
+.wp-online {
+  position: relative;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 13%;
+    left: 86%;
+    z-index: 1;
+
+    width: 0.4em;
+    height: 0.4em;
+    margin: -0.2em 0 0 -0.2em;
+
+    border-radius: 50%;
+    border: 0.125em solid var(--white);
+    background: var(--green);
+  }
+}
+
+.wp-circle {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  background: var(--litegrey);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  & wp-svg,
+  & img {
+    width: 50%;
+    height: 50%;
+  }
+}

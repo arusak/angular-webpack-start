@@ -1,0 +1,31 @@
+nav {
+  position: fixed;
+  top: -2px;
+  left: 50%;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: space-around;
+
+  margin-left: -75px;
+  width: 180px;
+  padding: 4px 16px;
+  box-sizing: border-box;
+
+  border: thin solid #777;
+  border-radius: 0 0 10px 10px;
+  background: #000;
+  opacity: 0.2;
+
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  & a {
+    font-size: 10px;
+    color: var(--white);
+    padding: 0.2em;
+  }
+}

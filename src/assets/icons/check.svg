@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c4da06;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Check_Icon_копия_3" data-name="Check Icon копия 3" class="cls-1" d="M650.439,1464.01a1,1,0,0,1-1.414,0l-1.536-1.53a1,1,0,0,1,1.414-1.42l0.829,0.83,3.364-3.36a0.983,0.983,0,0,1,1.414,0,0.994,0.994,0,0,1,0,1.41ZM651,1453a8,8,0,1,0,8,8A8,8,0,0,0,651,1453Z" transform="translate(-643 -1453)"/>
+</svg>

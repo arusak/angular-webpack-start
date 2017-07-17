@@ -1,0 +1,50 @@
+:root {
+  --normal: hsl(0, 0%, 96%);
+  --hover: hsl(0, 0%, 95%);
+  --focus: hsl(0, 0%, 100%);
+}
+
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=email],
+input:not([type]),
+textarea {
+  background: var(--normal);
+  color: hsl(0, 0%, 40%);
+  border: thin solid var(--hover);
+  border-radius: 0.25em;
+
+  transition: all 0.1s linear;
+
+  &:read-write:hover {
+    background: hsl(0, 0%, 89%);
+    border-color: hsl(0, 0%, 89%);
+  }
+
+  &:read-write:focus, &:read-write:focus:hover {
+    background: var(--white);
+    border-color: var(--highlight);
+    box-shadow: 0 0 0.5rem var(--highlight);
+    outline: none;
+  }
+}
+
+input[type=text].on-grey,
+input[type=password].on-grey,
+input[type=number].on-grey,
+input[type=email].on-grey,
+input:not([type]).on-grey,
+.on-grey .dp-picker-input {
+  background: white;
+  box-shadow: 0 0 0.25rem hsla(0, 0%, 0%, 0.02);
+
+  &:read-write:hover {
+    border-color: hsl(0, 0%, 85%);
+  }
+
+  &:read-write:focus, &:read-write:focus:hover {
+    border-color: var(--highlight);
+    box-shadow: 0 0 8px var(--highlight);
+  }
+}

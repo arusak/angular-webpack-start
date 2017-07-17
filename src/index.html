@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular 💕 Webpack</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicon/manifest.json">
+  <link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+  <meta name="apple-mobile-web-app-title" content="Angular Sample">
+  <meta name="application-name" content="Angular Sample">
+  <meta name="msapplication-config" content="/assets/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <base href="/">
+
+  <script>
+    window.loadingStarted = new Date().getTime();
+  </script>
+</head>
+
+<body>
+<wp-app-root class="wp-app-root"></wp-app-root>
+
+<div id="pre-bootstrap-container">
+  <script>
+    // Listen for the 'appready' event, which will be emitted by the application
+    // and bubble up (as far as we know) to the document root.
+    document.addEventListener('appReady', function handleAppReady() {
+      var loadingEnded = new Date().getTime();
+      var preBootstrapContainer = document.getElementById('pre-bootstrap-container');
+      var preBootstrap = document.getElementById('pre-bootstrap');
+
+      window.console.log('App loaded in ' + (loadingEnded - window.loadingStarted) + 'ms');
+      window.loadingStarted = undefined;
+
+      // initiate the transitions.
+      preBootstrap.className = 'loaded';
+
+      // Remove the bootstrap container after the transition has
+      // completed (based on the known transition time).
+      setTimeout(function removeLoadingScreen() {
+        preBootstrapContainer.parentNode.removeChild(preBootstrapContainer);
+      }, 300);
+    });
+  </script>
+
+  <div id="pre-bootstrap">
+    <div class="messaging">
+      <h1>Loading application...</h1>
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
