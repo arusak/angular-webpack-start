@@ -5,7 +5,7 @@ import {tmEnvConfig} from "./config/env.config";
 
 import './styles/styles.css';
 
-if (tmEnvConfig.buildProfile === 'production') {
+if (tmEnvConfig.buildProfile === 'production' || tmEnvConfig.buildProfile === 'staging') {
   enableProdMode();
 }
 

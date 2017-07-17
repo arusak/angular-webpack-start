@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {LoggerConfig} from "../models/logger-config";
 import {tmLoggerConfig} from "../../../config/logger.config";
-import moment = require("moment");
+import * as moment from "moment";
 
 @Injectable()
 export class ConfigService {

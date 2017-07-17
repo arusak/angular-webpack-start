@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {Moment} from "moment";
-import moment = require("moment");
+import * as moment from "moment";
 
 @Component({
   moduleId: module.id,

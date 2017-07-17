@@ -1,8 +1,9 @@
-import 'core-js/es6';
-import 'core-js/es7/reflect';
+import {tmEnvConfig} from "./config/env.config";
+
+import 'core-js/client/shim';
 require('zone.js/dist/zone');
 
-if (process.env.ENV === 'production') {
+if (tmEnvConfig.buildProfile === 'production') {
   // Production
 } else {
   // Development and test
