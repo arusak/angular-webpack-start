@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -17,7 +16,7 @@ const config = {
   }
 };
 config.isProd = BUILD_PROFILE === 'production';
-let staticAssetsTest= /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/;
+let staticAssetsTest = /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/;
 
 let wpc = {
   entry: {
@@ -27,7 +26,11 @@ let wpc = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
+    alias: {
+      // @see https://github.com/moment/moment/issues/1435#issuecomment-249773545
+      moment: 'moment/moment'
+    },
   },
 
   //devtool: config.isProd ? 'source-map' : 'cheap-module-inline-source-map',
@@ -138,6 +141,9 @@ let wpc = {
     new webpack.NamedModulesPlugin(),
 
     new webpack.HotModuleReplacementPlugin(),
+
+    // @see https://github.com/moment/moment/issues/1435#issuecomment-249773545
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
 
     new ExtractTextPlugin('[name].bundle.css'),
 
