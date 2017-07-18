@@ -16,7 +16,7 @@ let stagingConfig = {
     app: path.join(paths.src, 'main.ts'),
   },
 
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
 
   output: {
     path: paths.dest,

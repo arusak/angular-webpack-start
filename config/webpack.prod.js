@@ -7,7 +7,7 @@ const paths = utils.paths;
 
 let stagingConfig = require('./webpack.staging');
 let prodConfig = {
-  devtool: 'source-map',
+  devtool: 'nosources-source-map',
 
   module: {
     rules: []
