@@ -14,7 +14,7 @@ let devConfig = {
   entry: {
     polyfills: path.join(paths.src, 'polyfills.ts'),
     vendor: path.join(paths.src, 'vendor.jit.ts'),
-    app: path.join(paths.src, 'main.jit.ts'),
+    app: path.join(paths.src, 'main.ts'),
   },
 
   devtool: 'source-map',
@@ -39,13 +39,6 @@ let devConfig = {
           {
             loader: 'awesome-typescript-loader',
             options: {}
-          },
-          {
-            loader: 'angular-router-loader',
-            options: {
-              aot: true,
-              genDir: 'aot/'
-            }
           },
           'angular2-template-loader'
         ]

@@ -21,11 +21,12 @@
     "forkChecker": true,
     "useWebpackText": true
   },
-  "angularCompilerOptions": {
-    "genDir": "aot",
-    "skipMetadataEmit": true
-  },
   "exclude": [
-    "src/main.aot.ts"
-  ]
+    "node_modules",
+    "build"
+  ],
+  "angularCompilerOptions": {
+    "genDir": ".",
+    "entryModule": "src/app/app.module#AppModule"
+  }
 }

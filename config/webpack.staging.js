@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const AotPlugin = require('@ngtools/webpack').AotPlugin;
 
 const utils = require('./webpack.utils');
 const paths = utils.paths;
@@ -10,7 +11,7 @@ let stagingConfig = {
   entry: {
     polyfills: path.join(paths.src, 'polyfills.ts'),
     vendor: path.join(paths.src, 'vendor.aot.ts'),
-    app: path.join(paths.src, 'main.aot.ts'),
+    app: path.join(paths.src, 'main.ts'),
   },
 
   devtool: 'source-map',
@@ -27,26 +28,18 @@ let stagingConfig = {
       {
         test: /\.ts$/,
         use: [
-          {
-            loader: 'awesome-typescript-loader',
-            options: {
-              configFileName: 'tsconfig.aot.json'
-            }
-          },
-          {
-            loader: 'angular-router-loader',
-            options: {
-              aot: true,
-              genDir: 'aot/'
-            }
-          },
-          'angular2-template-loader'
+          '@ngtools/webpack'
         ]
       },
     ]
   },
 
-  plugins: [],
+  plugins: [
+    new AotPlugin({
+      tsConfigPath: path.join(paths.root, 'tsconfig.aot.json'),
+      entryModule: path.join(paths.src, 'app' , 'app.module#AppModule')
+    }),
+  ],
 };
 
 module.exports = merge(commonConfig, stagingConfig);

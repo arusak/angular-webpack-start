@@ -20,8 +20,5 @@
   "awesomeTypescriptLoaderOptions": {
     "forkChecker": true,
     "useWebpackText": true
-  },
-  "exclude": [
-    "src/main.aot.ts"
-  ]
+  }
 }

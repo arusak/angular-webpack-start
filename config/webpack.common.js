@@ -22,17 +22,6 @@ let commonConfig = {
 
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: [
-          {
-            loader: 'awesome-typescript-loader',
-            options: {}
-          },
-          'angular2-template-loader'
-        ]
-      },
-
       // стили компонентов
       {
         test: /\.css$/,
@@ -81,7 +70,7 @@ let commonConfig = {
 
 
   plugins: [
-    new CleanWebpackPlugin([paths.dest]),
+    new CleanWebpackPlugin([paths.dest], {root: paths.root}),
 
     // Workaround for angular/angular#11580
     new webpack.ContextReplacementPlugin(
