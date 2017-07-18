@@ -28,7 +28,6 @@ let commonConfig = {
         include: path.join(paths.src, 'app'),
         use: [
           'raw-loader',
-          // 'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -94,8 +93,6 @@ let commonConfig = {
 
     // @see https://github.com/moment/moment/issues/1435#issuecomment-249773545
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
-
-    new ExtractTextPlugin('[name].bundle.css'),
 
     // скопировать шрифты, картинки, звуки
     // используется в паре с WriteFilePlugin для работы с webpack-dev-server

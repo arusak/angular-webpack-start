@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const devServerPort = 3000;
 const apiPort = 8080;
 const apiHost = 'localhost';
@@ -47,6 +49,8 @@ let devConfig = {
   },
 
   plugins: [
+    new ExtractTextPlugin('[name].css'),
+
     new webpack.NamedModulesPlugin(),
 
     new webpack.HotModuleReplacementPlugin(),
