@@ -28,6 +28,7 @@
     "angular-router-loader": "^0.6.0",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.1",
+    "babili-webpack-plugin": "^0.1.2",
     "clean-webpack-plugin": "^0.1.16",
     "codelyzer": "^3.1.2",
     "copy-webpack-plugin": "^4.0.1",

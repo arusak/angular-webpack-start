@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const BabiliPlugin = require("babili-webpack-plugin");
 
 const utils = require('./webpack.utils');
 const paths = utils.paths;
@@ -21,16 +22,7 @@ let prodConfig = {
     // // Dedupe modules in the output
     // new webpack.optimize.DedupePlugin(),
 
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      mangle: {keep_fnames: true},
-      comments: false,
-      beautify: false,
-      compress: {
-        warnings: false,
-        drop_console: false
-      }
-    })
+    new BabiliPlugin()
   ],
 };
 
