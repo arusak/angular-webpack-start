@@ -42,6 +42,8 @@ let stagingConfig = {
       entryModule: path.join(paths.src, 'app' , 'app.module#AppModule')
     }),
 
+    // Extract text from a bundle, or bundles, into a separate file.
+    // https://webpack.js.org/plugins/extract-text-webpack-plugin/
     new ExtractTextPlugin('[name].[hash].css'),
   ],
 };

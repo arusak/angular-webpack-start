@@ -4,6 +4,8 @@ module.exports = {
   paths: {
     root: process.cwd(),
     src: path.join(process.cwd(), 'src'),
+    config: path.join(process.cwd(), 'config'),
+    libs: path.join(process.cwd(), 'node_modules'),
     dest: path.join(process.cwd(), 'build')
   },
 

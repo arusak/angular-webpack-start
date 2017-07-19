@@ -14,14 +14,12 @@ let prodConfig = {
   },
 
   plugins: [
-    // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
+    // https://webpack.js.org/plugins/no-emit-on-errors-plugin/
     // Only emit files when there are no errors
     new webpack.NoEmitOnErrorsPlugin(),
 
-    // // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-    // // Dedupe modules in the output
-    // new webpack.optimize.DedupePlugin(),
-
+    // Babel based minification
+    // https://webpack.js.org/plugins/babili-webpack-plugin/
     new BabiliPlugin()
   ],
 };

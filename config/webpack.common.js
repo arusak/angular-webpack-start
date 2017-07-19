@@ -32,11 +32,18 @@ let commonConfig = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: path.join(__dirname, 'config', 'postcss.config.js')
+                path: path.join(paths.config, 'postcss.config.js')
               }
             }
           }
         ]
+      },
+
+      // стили библиотечных компонентов
+      {
+        test: /\.css$/,
+        include: path.join(paths.libs),
+        use: 'raw-loader'
       },
 
       // глобальные стили в отдельном файле
@@ -53,7 +60,7 @@ let commonConfig = {
               loader: 'postcss-loader',
               options: {
                 config: {
-                  path: path.join(__dirname, 'config', 'postcss.config.js')
+                  path: path.join(paths.config, 'postcss.config.js')
                 }
               }
             }
@@ -78,21 +85,27 @@ let commonConfig = {
       {} // a map of your routes
     ),
 
+    // @see https://github.com/moment/moment/issues/1435#issuecomment-249773545
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
+
+    // Create global constants which can be configured at compile time
+    // https://webpack.js.org/plugins/define-plugin/
     new webpack.DefinePlugin({
       WEBAPP_PREFIX: JSON.stringify(utils.getWebAppPrefix()),
       BUILD_PROFILE: JSON.stringify(utils.getBuildProfile()),
     }),
 
+    // Extract common modules shared between chunks
+    // https://webpack.js.org/plugins/commons-chunk-plugin/
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
+      names: ['app', 'vendor', 'polyfills']
     }),
 
+    // Create HTML files to serve your webpack bundles
+    // https://github.com/jantimon/html-webpack-plugin
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
-
-    // @see https://github.com/moment/moment/issues/1435#issuecomment-249773545
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ru/),
 
     // скопировать шрифты, картинки, звуки
     // используется в паре с WriteFilePlugin для работы с webpack-dev-server

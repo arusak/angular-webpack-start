@@ -49,10 +49,14 @@ let devConfig = {
   },
 
   plugins: [
+    // Extract text from a bundle, or bundles, into a separate file.
+    // https://webpack.js.org/plugins/extract-text-webpack-plugin/
     new ExtractTextPlugin('[name].css'),
 
+    // Will cause the relative path of the module to be displayed when HMR is enabled
     new webpack.NamedModulesPlugin(),
 
+    // https://webpack.js.org/plugins/hot-module-replacement-plugin/
     new webpack.HotModuleReplacementPlugin(),
   ],
 
