@@ -30,4 +30,7 @@ module.exports = {
     return process.env.WEBAPP_PREFIX || '/';
   },
 
+  getAnalyzerMode() {
+    return process.env.USE_ANALYZER || 'disabled';
+  }
 };

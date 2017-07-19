@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const utils = require('./webpack.utils');
 const paths = utils.paths;
@@ -114,6 +115,13 @@ let commonConfig = {
       to: path.join(paths.dest, 'assets')
     }]),
     new WriteFilePlugin(),
+
+    // https://github.com/th0r/webpack-bundle-analyzer
+    new BundleAnalyzerPlugin({
+      analyzerPort: 8484,
+      openAnalyzer: true,
+      analyzerMode: utils.getAnalyzerMode()
+    })
   ],
 };
 

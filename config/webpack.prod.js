@@ -20,7 +20,7 @@ let prodConfig = {
 
     // Babel based minification
     // https://webpack.js.org/plugins/babili-webpack-plugin/
-    new BabiliPlugin()
+    new BabiliPlugin(),
   ],
 };
 
