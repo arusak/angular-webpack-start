@@ -33,6 +33,28 @@ let stagingConfig = {
           '@ngtools/webpack'
         ]
       },
+
+      // глобальные стили в отдельном файле
+      {
+        test: /\.css$/,
+        include: path.join(paths.src, 'styles'),
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {importLoaders: 1},
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: path.join(paths.config, 'postcss.config.js')
+                }
+              }
+            }
+          ]
+        })
+      },
     ]
   },
 

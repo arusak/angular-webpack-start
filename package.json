@@ -1,6 +1,6 @@
 {
   "name": "wp-frontend",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Angular + webpack sample project",
   "repository": "https://github.com/arusak/angular-webpack-start.git",
   "license": "MIT",

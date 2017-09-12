@@ -5,8 +5,15 @@ import {tmEnvConfig} from "./config/env.config";
 
 import './styles/styles.css';
 
+declare let module: any;
+
 if (tmEnvConfig.buildProfile === 'production' || tmEnvConfig.buildProfile === 'staging') {
   enableProdMode();
+} else {
+  // включить hmr
+  if (module.hot) {
+    module.hot.accept();
+  }
 }
 
 console.log('Bootstrapping application');

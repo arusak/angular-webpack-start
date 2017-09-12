@@ -2,8 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 const devServerPort = 3000;
 const apiPort = 8080;
 const apiHost = 'localhost';
@@ -45,14 +43,32 @@ let devConfig = {
           'angular2-template-loader'
         ]
       },
+
+      {
+        test: /\.css$/,
+        include: path.join(paths.src, 'styles'),
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {importLoaders: 1},
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: path.join(paths.config, 'postcss.config.js')
+              }
+            }
+          }
+        ]
+      },
     ]
   },
 
   plugins: [
-    // Extract text from a bundle, or bundles, into a separate file.
-    // https://webpack.js.org/plugins/extract-text-webpack-plugin/
-    new ExtractTextPlugin('[name].css'),
-
     // Will cause the relative path of the module to be displayed when HMR is enabled
     new webpack.NamedModulesPlugin(),
 
@@ -68,16 +84,20 @@ let devConfig = {
     publicPath: `http://localhost:${devServerPort}/`,
     historyApiFallback: true,
     stats: 'normal',
-    port: 3000,
+    port: devServerPort,
     proxy: {
       '/api': {
         target: `http://${apiHost}:${apiPort}`,
         changeOrigin: true,
         logLevel: 'debug',
-        onError: function () {
-          console.log(arguments);
+        onError: function (err, req, res, url) {
+          console.log(err);
         }
       }
+    },
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
     }
   }
 };
