@@ -1,12 +1,13 @@
 {
   "name": "wp-frontend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular + webpack sample project",
   "repository": "https://github.com/arusak/angular-webpack-start.git",
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --inline --progress",
     "debug": "webpack",
+    "ngc": "ngc",
     "test": "karma start ./config/karma.config.js",
     "bundle": "webpack --progress --profile --bail"
   },
@@ -46,6 +47,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-verbose-reporter": "0.0.6",
     "karma-webpack": "^2.0.4",
+    "loader-utils": "^1.1.0",
     "moment": "^2.18.1",
     "null-loader": "^0.1.1",
     "postcss": "^5.2.16",

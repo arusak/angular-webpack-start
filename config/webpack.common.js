@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -21,14 +20,23 @@ let commonConfig = {
     },
   },
 
+  // this is needed to use custom loaders
+  resolveLoader: {
+    modules: [
+      paths.libs,
+      paths.config
+    ]
+  },
+
   module: {
     rules: [
-      // стили компонентов
+      // component styles
       {
         test: /\.css$/,
         include: path.join(paths.src, 'app'),
         use: [
           'raw-loader',
+          // process with postcss
           {
             loader: 'postcss-loader',
             options: {
@@ -36,26 +44,44 @@ let commonConfig = {
                 path: path.join(paths.config, 'postcss.config.js')
               }
             }
+          },
+          // search for a themed one and append it to main file if found
+          {
+            loader: 'theme-loader',
+            options: {
+              theme: process.env.THEME,
+              mode: 'concat'
+            }
           }
         ]
       },
 
-      // стили библиотечных компонентов
+      // styles of dependency modules — import as is
       {
         test: /\.css$/,
         include: path.join(paths.libs),
         use: 'raw-loader'
       },
 
+      // angular templates — search for a themed one and use it if found
       {
         test: /\.html$/,
-        use: 'raw-loader'
+        use: ['raw-loader',
+          {
+            loader: 'theme-loader',
+            options: {
+              theme: process.env.THEME,
+              mode: 'replace'
+            }
+          }
+        ]
       }
     ]
   },
 
 
   plugins: [
+    // remove old build
     new CleanWebpackPlugin([paths.dest], {root: paths.root}),
 
     // Workaround for angular/angular#11580

@@ -27,6 +27,7 @@ wp-app-admin {
 
 .wp-main {
   display: flex;
+  flex-direction: column;
 
   flex: 1;
   width: 100%;

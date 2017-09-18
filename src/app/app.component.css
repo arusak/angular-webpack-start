@@ -1,3 +1,8 @@
+:host {
+  background: white;
+  padding: 2em;
+}
+
 nav {
   position: fixed;
   top: -2px;

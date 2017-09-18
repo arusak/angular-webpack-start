@@ -2,9 +2,22 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  padding: 1em 0;
+  margin: 0 0 3em 0;
 }
 
 .text {
+  font-size: 200%;
   display: inline-block;
   margin: 5px 0 0 5px;
+  color: #333;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.sign {
+  width: 5em;
 }
