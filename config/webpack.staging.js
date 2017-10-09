@@ -39,20 +39,7 @@ let stagingConfig = {
         test: /\.css$/,
         include: path.join(paths.src, 'styles'),
         use: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {importLoaders: 1},
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  path: path.join(paths.config, 'postcss.config.js')
-                }
-              }
-            }
-          ]
+          use: require('./webpack.css-loaders')({includeCssLoader: true})
         })
       },
     ]

@@ -26,8 +26,15 @@ module.exports = {
   },
 
   getWebAppPrefix() {
-    // set by maven
     return process.env.WEBAPP_PREFIX || '/';
+  },
+
+  getStaticTheme() {
+    return process.env.STATIC_THEME || 'default';
+  },
+
+  getDynamicThemes() {
+    return process.env.DYNAMIC_THEMES || '';
   },
 
   getAnalyzerMode() {

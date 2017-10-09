@@ -34,26 +34,7 @@ let commonConfig = {
       {
         test: /\.css$/,
         include: path.join(paths.src, 'app'),
-        use: [
-          'raw-loader',
-          // process with postcss
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: path.join(paths.config, 'postcss.config.js')
-              }
-            }
-          },
-          // search for a themed one and append it to main file if found
-          {
-            loader: 'theme-loader',
-            options: {
-              theme: process.env.THEME,
-              mode: 'concat'
-            }
-          }
-        ]
+        use: require('./webpack.css-loaders')({includeRawLoader: true})
       },
 
       // styles of dependency modules — import as is
@@ -68,9 +49,9 @@ let commonConfig = {
         test: /\.html$/,
         use: ['raw-loader',
           {
-            loader: 'theme-loader',
+            loader: 'static-theme-loader',
             options: {
-              theme: process.env.THEME,
+              theme: process.env.STATIC_THEME,
               mode: 'replace'
             }
           }

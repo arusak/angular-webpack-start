@@ -5,7 +5,7 @@
   "repository": "https://github.com/arusak/angular-webpack-start.git",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress",
+    "start": "webpack-dev-server --inline",
     "debug": "webpack",
     "ngc": "ngc",
     "test": "karma start ./config/karma.config.js",

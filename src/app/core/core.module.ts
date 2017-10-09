@@ -5,6 +5,7 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
 import {DomEventsService} from "./services/dom-events.service";
 import {PageService} from "./services/page.service";
 import {ConfigService} from "./services/config.service";
+import {StartupService} from "./services/startup.service";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import {ConfigService} from "./services/config.service";
     PageService,
     DomEventsService,
     ConfigService,
+    StartupService,
   ]
 })
 export class CoreModule {

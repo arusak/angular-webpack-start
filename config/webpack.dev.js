@@ -47,23 +47,7 @@ let devConfig = {
       {
         test: /\.css$/,
         include: path.join(paths.src, 'styles'),
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-            options: {importLoaders: 1},
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: path.join(paths.config, 'postcss.config.js')
-              }
-            }
-          }
-        ]
+        use: require('./webpack.css-loaders')({includeCssLoader: true, includeStyleLoader: true})
       },
     ]
   },
