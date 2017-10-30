@@ -10,6 +10,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgModule} from "@angular/core";
 import {HeaderComponent} from "./header/header.component";
 import {LogoComponent} from "./logo/logo.component";
+import {LoginFormComponent} from './login-form/login-form.component';
 
 
 // Do declare components, directives, and pipes in a shared module
@@ -37,12 +38,14 @@ import {LogoComponent} from "./logo/logo.component";
     FormatDatePipe,
 
     HeaderComponent,
+    LoginFormComponent,
   ],
   declarations: [
     CapitalizePipe,
     FormatDatePipe,
     HeaderComponent,
     LogoComponent,
+    LoginFormComponent,
   ],
   providers: [
     // Do not provide services in shared modules. Services are usually

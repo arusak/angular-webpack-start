@@ -1,12 +1,19 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {AdminAppComponent} from "./admin.app.component";
+import {LoginComponent} from './components/login/login.component';
 
 
 const routes: Routes = [
   {
     path: 'admin',
-    component: AdminAppComponent
+    component: AdminAppComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      }
+    ]
   }
 ];
 
